@@ -1,3 +1,11 @@
+/*
+ * *
+ *  * Created by Harish on 3/24/21 2:07 PM
+ *  * Copyright (c) 2021 . All rights reserved.
+ *  * Last modified 3/24/21 1:26 PM
+ *
+ */
+
 package com.geeks4ever.phish;
 
 import android.accessibilityservice.AccessibilityService;
@@ -5,25 +13,22 @@ import android.accessibilityservice.AccessibilityServiceInfo;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ServiceInfo;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
-import android.provider.Settings;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.accessibility.AccessibilityManager;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationView;
 
 import java.util.List;
 
@@ -55,21 +60,21 @@ public class MainActivity extends AppCompatActivity {
         btn = findViewById(R.id.isEnabled);
         status = findViewById(R.id.ProtectionStatus);
         accessibilityEnabledStatusCheck();
-        bottomnavigationbar=(BottomNavigationView)findViewById(R.id.bottom_navigation);
+        bottomnavigationbar = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         //findViewById(R.id.buttonCreateWidget).setOnClickListener(this);
 
         bottomnavigationbar.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.search:
-                        Toast.makeText(MainActivity.this, "Recents", Toast.LENGTH_SHORT).show();
+                    case R.id.logging:
+                        startActivity(new Intent(MainActivity.this, LogActivity.class));
                         break;
-                    case R.id.comment:
-                        Toast.makeText(MainActivity.this, "Favorites", Toast.LENGTH_SHORT).show();
+                    case R.id.addlinks:
+                        startActivity(new Intent(MainActivity.this, AddLinksActivity.class));
                         break;
-                    case R.id.stats:
-                        startActivity(new Intent(MainActivity.this, com.geeks4ever.phish.Settings.class));
+                    case R.id.settings:
+                        startActivity(new Intent(MainActivity.this, SettingsActivity.class));
                         break;
 
                 }
@@ -79,8 +84,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void accessibilityEnabledStatusCheck(){
-        if(enabled = isAccessibilityServiceEnabled(getApplicationContext(), MyAccessibilityService.class)){
+    public void accessibilityEnabledStatusCheck() {
+        if (enabled = isAccessibilityServiceEnabled(getApplicationContext(), MyAccessibilityService.class)) {
             //Enabled
             btn.setText("Disable");
             btn.setBackgroundColor(0xFF00FF00);
@@ -91,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
                 askPermission();
             }
 
-        }else{
+        } else {
             //disabled
             //show Enable btn
             btn.setText("Enable");
@@ -101,20 +106,20 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void checkEnabled(View view){
-        if(enabled){
+    public void checkEnabled(View view) {
+        if (enabled) {
             //permission given
-            Log.d(TAG,"accessibility permission given");
+            Log.d(TAG, "accessibility permission given");
             getAccessibilityPermissions();
-        }else{
+        } else {
             //not given show UI to give permission
-            Log.d(TAG,"accessibility permission NOT given");
+            Log.d(TAG, "accessibility permission NOT given");
             getAccessibilityPermissions();
         }
     }
 
-    public void getAccessibilityPermissions(){
-        Log.d(TAG,"getting accessibility permissions!");
+    public void getAccessibilityPermissions() {
+        Log.d(TAG, "getting accessibility permissions!");
         Intent intent = new Intent(android.provider.Settings.ACTION_ACCESSIBILITY_SETTINGS);
         startActivityForResult(intent, 0);
     }
@@ -127,8 +132,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onRestart()
-    {
+    public void onRestart() {
         super.onRestart();
         // after resuming the activity
         accessibilityEnabledStatusCheck();

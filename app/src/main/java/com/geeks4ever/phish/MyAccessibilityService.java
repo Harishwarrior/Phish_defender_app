@@ -1,9 +1,16 @@
+/*
+ * *
+ *  * Created by Harish on 3/24/21 2:07 PM
+ *  * Copyright (c) 2021 . All rights reserved.
+ *  * Last modified 3/24/21 2:07 PM
+ *
+ */
+
 package com.geeks4ever.phish;
 
 import android.accessibilityservice.AccessibilityService;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.accessibility.AccessibilityEvent;
@@ -34,9 +41,6 @@ public class MyAccessibilityService extends AccessibilityService {
 
     private static final String TAG = "Phish_Defender";
     private String currentURL = "";
-    private String GoogleApiURL = "https://safebrowsing.googleapis.com/v4/threatMatches:find?key=AIzaSyDVhCTR3IWUfteUGVugMEepE235_50TlLY";
-//    private String ML_URL =  "https://rpadml.herokuapp.com/api";
-    private String ML_URL="https://phish-defender.herokuapp.com/api";
     public RequestQueue queue;
     public boolean networkInit;
 
@@ -155,6 +159,7 @@ public class MyAccessibilityService extends AccessibilityService {
             final String urlToCheck2 = urlToCheck;
             JSONObject urlObject = new JSONObject();
             urlObject.put("url",urlToCheck);
+            String ML_URL = "https://phish-defender.herokuapp.com/api";
             String url = ML_URL;
             JsonObjectRequest jsonObjectRequest  = new JsonObjectRequest(Request.Method.POST, url, urlObject,
                     new Response.Listener<JSONObject>()
@@ -215,7 +220,8 @@ public class MyAccessibilityService extends AccessibilityService {
             final String urlToCheck2 = urlToCheck;
             JSONObject json = getJsonObject(urlToCheck);
             Log.d(TAG, json.toString());
-            String url = GoogleApiURL;
+            String googleApiURL = "https://safebrowsing.googleapis.com/v4/threatMatches:find?key=AIzaSyDVhCTR3IWUfteUGVugMEepE235_50TlLY";
+            String url = googleApiURL;
             JsonObjectRequest jsonObjectRequest  = new JsonObjectRequest(Request.Method.POST, url, json,
                     new Response.Listener<JSONObject>()
                     {

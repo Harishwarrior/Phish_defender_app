@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Phishh.iml" filepath="$PROJECT_DIR$/.idea/modules/Phishh.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Phishh.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Phishh.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/phish_defender_app.iml" filepath="$PROJECT_DIR$/.idea/modules/phish_defender_app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/phish_defender_app.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/phish_defender_app.app.iml" />
     </modules>
   </component>
 </project>

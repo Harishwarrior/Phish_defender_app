@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ /**
+  ~  * Created by Harish on 3/24/21 2:07 PM
+  ~  * Copyright (c) 2021 . All rights reserved.
+  ~  * Last modified 3/23/21 11:22 AM
+  ~  */
+  -->
+
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:color="#2573FA" android:state_pressed="true" />
     <item android:color="#2573FA" android:state_checked="true" />

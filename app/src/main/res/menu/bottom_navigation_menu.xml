@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ /**
+  ~  * Created by Harish on 3/24/21 2:07 PM
+  ~  * Copyright (c) 2021 . All rights reserved.
+  ~  * Last modified 3/23/21 11:22 AM
+  ~  */
+  -->
+
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/search"
-        android:icon="@drawable/ic_search_24px"
-        android:title="@string/home" />
+        android:id="@+id/logging"
+        android:icon="@drawable/ic_baseline_list_24"
+        android:title="Logging" />
 
     <item
-        android:id="@+id/comment"
-        android:icon="@drawable/ic_comment_24px"
-        android:title="@string/logs" />
+        android:id="@+id/addlinks"
+        android:icon="@drawable/ic_baseline_add_24"
+        android:title="add links" />
 
     <item
-        android:id="@+id/stats"
-        android:icon="@drawable/ic_data_usage_24px"
+        android:id="@+id/settings"
+        android:icon="@drawable/ic_baseline_settings_applications_24"
         android:title="@string/settings" />
 </menu>

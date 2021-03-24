@@ -1,3 +1,11 @@
+<!--
+  ~ /**
+  ~  * Created by Harish on 3/24/21 2:07 PM
+  ~  * Copyright (c) 2021 . All rights reserved.
+  ~  * Last modified 3/23/21 11:22 AM
+  ~  */
+  -->
+
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
@@ -6,10 +14,6 @@
         <item name="colorPrimary">@color/black</item>
         <item name="colorPrimaryDark">@color/black</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:windowLightStatusBar">true</item>
-        <item name="android:statusBarColor">@color/white</item>
-        <item name="android:navigationBarColor">@color/background_material_light</item>
-        <item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>
 
     </style>
 

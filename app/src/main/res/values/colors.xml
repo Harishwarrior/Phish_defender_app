@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ /**
+  ~  * Created by Harish on 3/24/21 2:07 PM
+  ~  * Copyright (c) 2021 . All rights reserved.
+  ~  * Last modified 3/23/21 11:22 AM
+  ~  */
+  -->
+
 <resources>
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>

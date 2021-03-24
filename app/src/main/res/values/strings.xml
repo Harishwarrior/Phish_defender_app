@@ -1,3 +1,11 @@
+<!--
+  ~ /**
+  ~  * Created by Harish on 3/24/21 2:07 PM
+  ~  * Copyright (c) 2021 . All rights reserved.
+  ~  * Last modified 3/23/21 11:22 AM
+  ~  */
+  -->
+
 <resources>
     <string name="app_name">Phish Defender</string>
     <string name="accessibility_description">Gets HTTP Links and URLS from apps</string>
@@ -7,4 +15,23 @@
     <string name="logs">logs</string>
     <string name="settings">settings</string>
     <string name="probable_phishing_site">Probable Phishing Site!</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="crowdsurcing_content">Help us fight against phishing and cyberattacks by submitting any undetected links. Using the power of crowdsourcing we can put an full stop to phishing scams.</string>
+    <string name="add_links">Add Links</string>
+    <string name="submit">Submit</string>
 </resources>
