@@ -28,7 +28,6 @@
             android:visibility="visible">
 
             <ImageView
-                android:id="@+id/collapsed_iv"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_marginTop="8dp"
@@ -54,14 +53,12 @@
             android:visibility="gone">
 
             <ImageView
-                android:id="@+id/buttonSimplifiedCodingExpanded"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:src="@drawable/phishing"
                 tools:ignore="ContentDescription" />
 
             <LinearLayout
-                android:id="@+id/buttonSimplifiedCoding"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -82,22 +79,22 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
                     android:text="@string/probable_phishing_site"
                     android:textAlignment="center"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                     android:textColor="#ffffff"
-                    android:textStyle="bold"
-                    android:gravity="center_horizontal" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/url"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
                     android:text="http://www.google.com/shdshgkshk/sgjhsgh.php"
                     android:textAlignment="center"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                    android:textColor="#ffffff"
-                    android:gravity="center_horizontal" />
+                    android:textColor="#ffffff" />
             </LinearLayout>
 
 

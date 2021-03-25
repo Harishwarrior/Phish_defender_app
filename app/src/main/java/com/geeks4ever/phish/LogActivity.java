@@ -8,9 +8,9 @@
 
 package com.geeks4ever.phish;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class LogActivity extends AppCompatActivity {
 

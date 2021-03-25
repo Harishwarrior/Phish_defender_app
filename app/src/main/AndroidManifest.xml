@@ -12,6 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
+        <activity android:name=".ListDataActivity"></activity>
         <activity android:name=".LogActivity" />
         <activity android:name=".AddLinksActivity" />
         <activity android:name=".SettingsActivity" />

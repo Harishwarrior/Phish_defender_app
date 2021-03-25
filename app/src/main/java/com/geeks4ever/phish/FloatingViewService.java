@@ -24,13 +24,12 @@ import android.widget.TextView;
 public class FloatingViewService extends Service implements View.OnClickListener {
 
 
+    public TextView url;
+    public String StringTobePassedInView;
     private WindowManager mWindowManager;
     private View mFloatingView;
     private View collapsedView;
     private View expandedView;
-    public TextView url;
-
-    public String StringTobePassedInView;
 
     public FloatingViewService() {
     }
@@ -117,19 +116,18 @@ public class FloatingViewService extends Service implements View.OnClickListener
 
     }
 
-    public void urlSetter(){
-        Log.d("FloatingService","urlSetter StringTobePassedInview: "+StringTobePassedInView);
-        Log.d("FloatingService","now setting the url of text view");
+    public void urlSetter() {
+        Log.d("FloatingService", "urlSetter StringTobePassedInview: " + StringTobePassedInView);
+        Log.d("FloatingService", "now setting the url of text view");
         url.setText(StringTobePassedInView);
     }
 
-    public int onStartCommand (Intent intent, int flags, int startId)
-    {
+    public int onStartCommand(Intent intent, int flags, int startId) {
         super.onStartCommand(intent, flags, startId);
         Bundle b = intent.getExtras();
         assert b != null;
         StringTobePassedInView = b.getString("url");
-        Log.d("FloatingService","onStartCommand StringTobePassedInview: "+StringTobePassedInView);
+        Log.d("FloatingService", "onStartCommand StringTobePassedInview: " + StringTobePassedInView);
         //set url now
         urlSetter();
         return START_REDELIVER_INTENT;

@@ -40,15 +40,15 @@ import java.util.Map;
 public class MyAccessibilityService extends AccessibilityService {
 
     private static final String TAG = "Phish_Defender";
-    private String currentURL = "";
     public RequestQueue queue;
     public boolean networkInit;
+    private String currentURL = "";
 
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
-        if(networkInit){
+        if (networkInit) {
             //already network request queue initialized
-        }else{
+        } else {
             //init network request queue
             queue = Volley.newRequestQueue(this);
         }
@@ -82,7 +82,7 @@ public class MyAccessibilityService extends AccessibilityService {
                     AccessibilityNodeInfo nodeInfo = event.getSource();
                     getUrlsFromViews(nodeInfo);
                 }
-            } catch(StackOverflowError | Exception ex){
+            } catch (StackOverflowError | Exception ex) {
                 ex.printStackTrace();
             }
         }
@@ -90,6 +90,7 @@ public class MyAccessibilityService extends AccessibilityService {
 
     /**
      * Method to loop through all the views and try to find a URL.
+     *
      * @param info
      */
     public void getUrlsFromViews(AccessibilityNodeInfo info) {
@@ -107,7 +108,7 @@ public class MyAccessibilityService extends AccessibilityService {
                     if (!currentURL.equals(capturedText)) {
                         // Do something with the url.
                         currentURL = capturedText;
-                        Log.d(TAG, "Found URL: "+capturedText);
+                        Log.d(TAG, "Found URL: " + capturedText);
                         checkURL(currentURL);
                     }
 
@@ -117,17 +118,17 @@ public class MyAccessibilityService extends AccessibilityService {
             for (int i = 0; i < info.getChildCount(); i++) {
                 AccessibilityNodeInfo child = info.getChild(i);
                 getUrlsFromViews(child);
-                if(child != null){
+                if (child != null) {
                     child.recycle();
                 }
             }
-        } catch(StackOverflowError | Exception ex){
+        } catch (StackOverflowError | Exception ex) {
             ex.printStackTrace();
         }
     }
 
-    private void checkURL(String url){
-        if(url.contains("instagram")){
+    private void checkURL(String url) {
+        if (url.contains("instagram")) {
             url = instagramURLDecoder(url);
         }
         //first check with Google
@@ -136,10 +137,10 @@ public class MyAccessibilityService extends AccessibilityService {
         //showFloatingWindow("https://www.google.com/sjhsfh/fsagfiushf");
     }
 
-    private void showFloatingWindow(String urlToShowinView){
+    private void showFloatingWindow(String urlToShowinView) {
         if (Settings.canDrawOverlays(this)) {
             Intent i = new Intent(this, FloatingViewService.class);
-            i.putExtra("url",urlToShowinView);
+            i.putExtra("url", urlToShowinView);
             startService(i);
             //finish();
         } else {
@@ -149,31 +150,30 @@ public class MyAccessibilityService extends AccessibilityService {
         }
     }
 
-    private void machineLearningCheck(String urlToCheck){
-        try{
+    private void machineLearningCheck(String urlToCheck) {
+        try {
             //url
             final String urlToCheck2 = urlToCheck;
             JSONObject urlObject = new JSONObject();
-            urlObject.put("url",urlToCheck);
+            urlObject.put("url", urlToCheck);
             String url = "https://phish-defender.herokuapp.com/api";
-            JsonObjectRequest jsonObjectRequest  = new JsonObjectRequest(Request.Method.POST, url, urlObject,
-                    new Response.Listener<JSONObject>()
-                    {
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, urlObject,
+                    new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
                             // response
                             Log.d("Response", response.toString());
-                            if(response.has("prediction")){
+                            if (response.has("prediction")) {
                                 Log.d(TAG, "Got Response!!");
-                                try{
+                                try {
                                     int Result = response.getInt("prediction");
-                                    if(Result == 1){
+                                    if (Result == 1) {
                                         //phishing site
                                         //show floatUI
                                         showFloatingWindow(urlToCheck2);
                                         Log.d(TAG, "Phishing Site!!");
                                     }
-                                }catch(JSONException jsx){
+                                } catch (JSONException jsx) {
                                     Log.d(TAG, jsx.toString());
                                 }
 
@@ -181,94 +181,87 @@ public class MyAccessibilityService extends AccessibilityService {
                             }
                         }
                     },
-                    new Response.ErrorListener()
-                    {
+                    new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             // error
                             Log.d("Error.Response", error.toString());
                         }
                     }
-            )
-            {
+            ) {
                 @Override
                 public Map<String, String> getHeaders() throws AuthFailureError {
-                    Map<String, String>  params = new HashMap<String, String>();
+                    Map<String, String> params = new HashMap<String, String>();
                     params.put("Content-Type", "application/json");
                     return params;
                 }
             };
 
 
-
             //queue.add(postRequest);
             //jsonObjectRequest.setTag(REQ_TAG);
             queue.add(jsonObjectRequest);
 
-        }catch(Exception ignored){
+        } catch (Exception ignored) {
 
         }
     }
 
-    private void checkGoogleSafeBrowsing(String urlToCheck){
-        try{
+    private void checkGoogleSafeBrowsing(String urlToCheck) {
+        try {
             final String urlToCheck2 = urlToCheck;
             JSONObject json = getJsonObject(urlToCheck);
             Log.d(TAG, json.toString());
             String url = "https://safebrowsing.googleapis.com/v4/threatMatches:find?key=AIzaSyDVhCTR3IWUfteUGVugMEepE235_50TlLY";
-            JsonObjectRequest jsonObjectRequest  = new JsonObjectRequest(Request.Method.POST, url, json,
-                    new Response.Listener<JSONObject>()
-                    {
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, json,
+                    new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
                             // response
                             Log.d("Response", response.toString());
-                            if(response.has("matches")){
+                            if (response.has("matches")) {
                                 Log.d(TAG, "Phishing Site!!");
                                 showFloatingWindow(urlToCheck2);
-                            }else{
+                            } else {
                                 //check with machine learning API
                                 machineLearningCheck(urlToCheck2);
                             }
                         }
                     },
-                    new Response.ErrorListener()
-                    {
+                    new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             // error
                             Log.d("Error.Response", error.toString());
                         }
                     }
-            )
-            {
+            ) {
                 @Override
                 public Map<String, String> getHeaders() throws AuthFailureError {
-                    Map<String, String>  params = new HashMap<String, String>();
+                    Map<String, String> params = new HashMap<String, String>();
                     params.put("Content-Type", "application/json");
                     return params;
                 }
             };
 
 
-
             //queue.add(postRequest);
             //jsonObjectRequest.setTag(REQ_TAG);
             queue.add(jsonObjectRequest);
-        }catch(JSONException jsx){
+        } catch (JSONException jsx) {
             Log.d(TAG, jsx.toString());
         }
 
     }
 
-    private String instagramURLDecoder(String url){
+    private String instagramURLDecoder(String url) {
         String mainLink = url;
-        try{
+        try {
             String afterDecode = URLDecoder.decode(url, "UTF-8");
             Uri uri = Uri.parse(afterDecode);
             mainLink = uri.getQueryParameter("u");
-            Log.d(TAG, "got intagram main link: "+mainLink);
-        }catch(UnsupportedEncodingException unsupp){
+            Log.d(TAG, "got intagram main link: " + mainLink);
+        } catch (UnsupportedEncodingException unsupp) {
             Log.d(TAG, unsupp.toString());
         }
         return mainLink;
@@ -280,9 +273,9 @@ public class MyAccessibilityService extends AccessibilityService {
 
         //url
         JSONObject urlObject = new JSONObject();
-        urlObject.put("url",url);
+        urlObject.put("url", url);
 
-        List <JSONObject> urlList = new ArrayList<JSONObject>();
+        List<JSONObject> urlList = new ArrayList<JSONObject>();
         urlList.add(urlObject);
 
         JSONArray urlArray = new JSONArray(urlList);
@@ -297,15 +290,15 @@ public class MyAccessibilityService extends AccessibilityService {
         //threat
         JSONObject threatObject = new JSONObject();
         JSONObject threatJson = new JSONObject();
-        threatJson.put("threatTypes","SOCIAL_ENGINEERING");
-        threatJson.put("platformTypes","WINDOWS");
-        threatJson.put("threatEntryTypes","URL");
-        threatJson.put("threatEntries",urlArray);
+        threatJson.put("threatTypes", "SOCIAL_ENGINEERING");
+        threatJson.put("platformTypes", "WINDOWS");
+        threatJson.put("threatEntryTypes", "URL");
+        threatJson.put("threatEntries", urlArray);
         //threatObject.put("threatInfo",threatJson);
 
         //final Object
-        jsonObject.put("client",clientJson);
-        jsonObject.put("threatInfo",threatJson);
+        jsonObject.put("client", clientJson);
+        jsonObject.put("threatInfo", threatJson);
 
 
         return jsonObject;
