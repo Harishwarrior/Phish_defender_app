@@ -34,4 +34,6 @@
     <string name="crowdsurcing_content">Help us fight against phishing and cyberattacks by submitting any undetected links. Using the power of crowdsourcing we can put an full stop to phishing scams.</string>
     <string name="add_links">Add Links</string>
     <string name="submit">Submit</string>
+    <string name="dark_theme">Dark theme</string>
+    <string name="made_with_by_geeks4ever">Made with ♥ by Geeks4ever</string>
 </resources>

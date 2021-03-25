@@ -127,6 +127,7 @@ public class FloatingViewService extends Service implements View.OnClickListener
     {
         super.onStartCommand(intent, flags, startId);
         Bundle b = intent.getExtras();
+        assert b != null;
         StringTobePassedInView = b.getString("url");
         Log.d("FloatingService","onStartCommand StringTobePassedInview: "+StringTobePassedInView);
         //set url now

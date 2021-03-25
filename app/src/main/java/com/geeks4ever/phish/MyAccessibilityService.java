@@ -82,9 +82,7 @@ public class MyAccessibilityService extends AccessibilityService {
                     AccessibilityNodeInfo nodeInfo = event.getSource();
                     getUrlsFromViews(nodeInfo);
                 }
-            } catch(StackOverflowError ex){
-                ex.printStackTrace();
-            } catch (Exception ex) {
+            } catch(StackOverflowError | Exception ex){
                 ex.printStackTrace();
             }
         }
@@ -123,9 +121,7 @@ public class MyAccessibilityService extends AccessibilityService {
                     child.recycle();
                 }
             }
-        } catch(StackOverflowError ex){
-            ex.printStackTrace();
-        } catch (Exception ex) {
+        } catch(StackOverflowError | Exception ex){
             ex.printStackTrace();
         }
     }
@@ -159,8 +155,7 @@ public class MyAccessibilityService extends AccessibilityService {
             final String urlToCheck2 = urlToCheck;
             JSONObject urlObject = new JSONObject();
             urlObject.put("url",urlToCheck);
-            String ML_URL = "https://phish-defender.herokuapp.com/api";
-            String url = ML_URL;
+            String url = "https://phish-defender.herokuapp.com/api";
             JsonObjectRequest jsonObjectRequest  = new JsonObjectRequest(Request.Method.POST, url, urlObject,
                     new Response.Listener<JSONObject>()
                     {
@@ -220,8 +215,7 @@ public class MyAccessibilityService extends AccessibilityService {
             final String urlToCheck2 = urlToCheck;
             JSONObject json = getJsonObject(urlToCheck);
             Log.d(TAG, json.toString());
-            String googleApiURL = "https://safebrowsing.googleapis.com/v4/threatMatches:find?key=AIzaSyDVhCTR3IWUfteUGVugMEepE235_50TlLY";
-            String url = googleApiURL;
+            String url = "https://safebrowsing.googleapis.com/v4/threatMatches:find?key=AIzaSyDVhCTR3IWUfteUGVugMEepE235_50TlLY";
             JsonObjectRequest jsonObjectRequest  = new JsonObjectRequest(Request.Method.POST, url, json,
                     new Response.Listener<JSONObject>()
                     {
@@ -296,7 +290,7 @@ public class MyAccessibilityService extends AccessibilityService {
         //client
         JSONObject clientObject = new JSONObject();
         JSONObject clientJson = new JSONObject();
-        clientJson.put("clientId", "RPADML");
+        clientJson.put("clientId", "Phish_Defender");
         clientJson.put("clientVersion", "1.5.2");
         //clientObject.put("client", clientJson);
 

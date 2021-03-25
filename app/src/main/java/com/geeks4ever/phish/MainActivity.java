@@ -29,6 +29,8 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textview.MaterialTextView;
 
 import java.util.List;
 
@@ -36,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
     public final static int REQUEST_CODE = 676;
     private static final String TAG = "Phish_MainActivity";
     public boolean enabled;
-    public Button btn;
-    public TextView status;
+    public MaterialButton btn;
+    public MaterialTextView status;
     public BottomNavigationView bottomnavigationbar;
 
     public static boolean isAccessibilityServiceEnabled(Context context, Class<? extends AccessibilityService> service) {
@@ -60,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         btn = findViewById(R.id.isEnabled);
         status = findViewById(R.id.ProtectionStatus);
         accessibilityEnabledStatusCheck();
-        bottomnavigationbar = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        bottomnavigationbar = findViewById(R.id.bottom_navigation);
         //findViewById(R.id.buttonCreateWidget).setOnClickListener(this);
 
         bottomnavigationbar.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
