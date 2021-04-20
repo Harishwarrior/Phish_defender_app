@@ -66,17 +66,8 @@ public class MainActivity extends AppCompatActivity {
         bottomnavigationbar.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.logging:
-                        startActivity(new Intent(MainActivity.this, LogActivity.class));
-                        break;
-                    case R.id.addlinks:
-                        startActivity(new Intent(MainActivity.this, AddLinksActivity.class));
-                        break;
-                    case R.id.settings:
-                        startActivity(new Intent(MainActivity.this, SettingsActivity.class));
-                        break;
-
+                if (item.getItemId() == R.id.addlinks) {
+                    startActivity(new Intent(MainActivity.this, AddLinksActivity.class));
                 }
                 return true;
             }

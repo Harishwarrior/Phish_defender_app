@@ -37,16 +37,17 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <ImageView
+        android:id="@+id/imageView"
         android:layout_width="88dp"
         android:layout_height="82dp"
+        android:contentDescription="@string/crowdsourceicon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvCrowdsource"
-        app:layout_constraintVertical_bias="0.263"
-        app:srcCompat="@drawable/crowdsourcing_icon"
-        android:contentDescription="@string/crowdsourceicon" />
+        app:layout_constraintVertical_bias="0.508"
+        app:srcCompat="@drawable/crowdsourcing_icon" />
 
     <TextView
         android:id="@+id/tvCrowdsource"
@@ -66,7 +67,7 @@
         app:layout_constraintStart_toStartOf="parent"
 
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
-        app:layout_constraintVertical_bias="0.333" />
+        app:layout_constraintVertical_bias="0.469" />
 
     <Button
         android:id="@+id/btnAdd"
@@ -74,24 +75,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/submit"
-        app:layout_constraintBottom_toTopOf="@+id/tvCrowdsource"
-        app:layout_constraintEnd_toStartOf="@+id/btnView"
-        app:layout_constraintHorizontal_bias="0.717"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
-        app:layout_constraintVertical_bias="0.551" />
+        app:layout_constraintVertical_bias="0.09" />
 
     <Button
         android:id="@+id/btnView"
         style="?attr/materialButtonOutlinedStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="40dp"
         android:text="@string/view"
-        app:layout_constraintBottom_toTopOf="@+id/tvCrowdsource"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.687"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/btnAdd"
         app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

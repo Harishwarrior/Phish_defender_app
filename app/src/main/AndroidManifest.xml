@@ -13,9 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
         <activity android:name=".ListDataActivity"></activity>
-        <activity android:name=".LogActivity" />
         <activity android:name=".AddLinksActivity" />
-        <activity android:name=".SettingsActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
