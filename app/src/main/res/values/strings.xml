@@ -9,7 +9,6 @@
 <resources>
     <string name="app_name">Phish Defender</string>
     <string name="accessibility_description">Gets HTTP Links and URLS from apps</string>
-    <string name="settings">settings</string>
     <string name="probable_phishing_site">Warning! Phishing Site</string>
 
     <!-- Preference Titles -->
@@ -20,7 +19,16 @@
     <string name="crowdsurcing_content">Help us fight against phishing and cyberattacks by submitting any undetected links. Using the power of crowdsourcing we can put an full stop to phishing scams.</string>
     <string name="add_links">Add Links</string>
     <string name="submit">Submit</string>
-    <string name="made_with_by_geeks4ever">Made with ♥ by Geeks4ever</string>
     <string name="crowdsourceicon">crowdsourceicon</string>
     <string name="view">View</string>
+    <string name="imagedescription">imagedescription</string>
+    <string name="active_protection">Active Protection!</string>
+    <string name="enable">Enable</string>
+    <string name="fab">fab</string>
+    <string name="none">none</string>
+    <string name="mock_link">http://www.google.com/shdshgkshk/sgjhsgh.php</string>
+    <string name="disable">Disable</string>
+    <string name="youareprotected">You\'re Protected!</string>
+    <string name="enable">Enable</string>
+    <string name="yourenotprotect">You\'re NOT Protected!</string>
 </resources>

@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ /**
   ~  * Created by Harish on 3/24/21 2:07 PM
   ~  * Copyright (c) 2021 . All rights reserved.
@@ -32,14 +31,16 @@
                 android:layout_height="70dp"
                 android:layout_marginTop="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/phishing" />
+                android:src="@drawable/phishing"
+                android:contentDescription="@string/none"/>
 
             <ImageView
                 android:id="@+id/buttonClose"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:layout_marginLeft="50dp"
-                android:src="@drawable/ic_close_btn" />
+                android:layout_marginStart="50dp"
+                android:src="@drawable/ic_close_btn"
+                android:contentDescription="@string/none"/>
         </RelativeLayout>
 
         <!-- this is the expanded layout -->
@@ -63,18 +64,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-<!--                <TextView-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:paddingLeft="15dp"-->
-<!--                    android:paddingRight="15dp"-->
-<!--                    android:paddingTop="8dp"-->
-<!--                    android:text="This site is Unsafe!"-->
-<!--                    android:textAlignment="center"-->
-<!--                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"-->
-<!--                    android:textColor="#ffffff"-->
-<!--                    android:textStyle="bold"-->
-<!--                    android:gravity="center_horizontal" />-->
 
                 <TextView
                     android:layout_width="match_parent"
@@ -91,12 +80,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="http://www.google.com/shdshgkshk/sgjhsgh.php"
+                    android:text="@string/mock_link"
                     android:textAlignment="center"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                     android:textColor="#ffffff" />
             </LinearLayout>
-
 
 
         </LinearLayout>

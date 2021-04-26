@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ /**
   ~  * Created by Harish on 3/24/21 2:07 PM
   ~  * Copyright (c) 2021 . All rights reserved.
@@ -18,26 +17,30 @@
 
 
     <ImageView
+        android:id="@+id/imageView2"
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:layout_gravity="center"
         android:background="@drawable/ic_undraw_security_on_ff2u"
         app:layout_constraintBottom_toTopOf="@+id/isEnabled"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        android:contentDescription="@string/imagedescription"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.594" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/ProtectionStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="112dp"
+        android:layout_marginBottom="168dp"
         android:gravity="center_horizontal"
-        android:text="Active Protection!"
+        android:text="@string/active_protection"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -48,29 +51,27 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="36dp"
         android:onClick="checkEnabled"
-        android:text="Enable"
+        android:text="@string/enable"
         app:layout_constraintBottom_toTopOf="@+id/ProtectionStatus"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_gravity="bottom"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="24dp"
-        android:background="@drawable/bottom_navigation_background"
-        android:elevation="8dp"
-        app:itemIconTint="@drawable/bottom_navigation_color_selector"
-        app:labelVisibilityMode="unlabeled"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floating_action_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:contentDescription="@string/fab"
+        app:backgroundTint="@color/design_default_color_primary"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.953"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/bottom_navigation_menu" />
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.892"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="0.863"
+        app:srcCompat="@drawable/ic_plus_24"
+        app:tint="@android:color/white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

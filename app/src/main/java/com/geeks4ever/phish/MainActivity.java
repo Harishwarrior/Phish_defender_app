@@ -18,16 +18,15 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.accessibility.AccessibilityManager;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textview.MaterialTextView;
 
 import java.util.List;
@@ -39,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     public MaterialButton btn;
     public MaterialTextView status;
     public BottomNavigationView bottomnavigationbar;
+    public FloatingActionButton fab;
 
     public static boolean isAccessibilityServiceEnabled(Context context, Class<? extends AccessibilityService> service) {
         AccessibilityManager am = (AccessibilityManager) context.getSystemService(Context.ACCESSIBILITY_SERVICE);
@@ -60,16 +60,13 @@ public class MainActivity extends AppCompatActivity {
         btn = findViewById(R.id.isEnabled);
         status = findViewById(R.id.ProtectionStatus);
         accessibilityEnabledStatusCheck();
-        bottomnavigationbar = findViewById(R.id.bottom_navigation);
-        //findViewById(R.id.buttonCreateWidget).setOnClickListener(this);
+        View fab = findViewById(R.id.floating_action_button);
 
-        bottomnavigationbar.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if (item.getItemId() == R.id.addlinks) {
-                    startActivity(new Intent(MainActivity.this, AddLinksActivity.class));
-                }
-                return true;
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, AddLinksActivity.class));
             }
         });
     }
@@ -78,10 +75,10 @@ public class MainActivity extends AppCompatActivity {
     public void accessibilityEnabledStatusCheck() {
         if (enabled = isAccessibilityServiceEnabled(getApplicationContext(), MyAccessibilityService.class)) {
             //Enabled
-            btn.setText("Disable");
+            btn.setText(R.string.disable);
             btn.setBackgroundColor(0xFF00FF00);
             btn.setTextColor(0xFF000000);
-            status.setText("You're Protected!");
+            status.setText(R.string.youareprotected);
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !Settings.canDrawOverlays(this)) {
                 askPermission();
@@ -90,10 +87,10 @@ public class MainActivity extends AppCompatActivity {
         } else {
             //disabled
             //show Enable btn
-            btn.setText("Enable");
+            btn.setText(R.string.enable);
             btn.setTextColor(0xFFFFFFFF);
             btn.setBackgroundColor(0xFFFF0000);
-            status.setText("You're NOT Protected!");
+            status.setText(R.string.yourenotprotect);
         }
     }
 
